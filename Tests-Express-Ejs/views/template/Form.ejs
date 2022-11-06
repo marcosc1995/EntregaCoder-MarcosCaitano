@@ -1,0 +1,21 @@
+<h1 style="color: blue">Ingresar datos</h1>
+<br />
+
+<div class="m-3">
+  <form class="form" action="/api/productos" method="post" name="productos">
+    <h2>Ingreso Productos</h2>
+    <div class="mb-3">
+      <label for="productTitle" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="productTitle" name="title" required placeholder="Nombre del Producto">
+    </div>
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Precio</label>
+      <input type="number" class="form-control" id="productPrice" name="price" required>
+    </div>
+    <div class="mb-3">
+      <label for="productImg" class="form-label">URL imagen</label>
+      <input type="text" class="form-control" id="productImg" name="thumbnail" required placeholder="URL de la imagen">
+    </div>       
+    <button class="btn btn-primary">Enviar</button>
+  </form>
+</div>

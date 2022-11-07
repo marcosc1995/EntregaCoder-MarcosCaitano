@@ -27,7 +27,7 @@ server.on('error',(error)=>{
     console.log(error)
 })
 app.get('/',(req,res)=>{
-    res.render('index', { productos, test: 'testExitoso' })
+    res.render('index', { productos })
 })
 
 

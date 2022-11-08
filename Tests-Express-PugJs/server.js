@@ -27,7 +27,7 @@ server.on('error',(error)=>{
     console.log(error)
 })
 app.get('/',(req,res)=>{
-    res.render('index', { productos, test: 'testExitoso' })
+    res.render('index', { productos: productos, test: 'testExitoso' })
 })
 
 
@@ -48,7 +48,7 @@ app.post('/api/productos', (req, res)=>{
 const arrayProductos = productos.productos
 app.get('/productos',(req,res)=>{
     console.log(arrayProductos)
-    res.render('boxProductos' ,{arrayProductos})
+    res.render('productos' ,{arrayProductos})
 
 })
 router.get("/:id", (req, res) => {

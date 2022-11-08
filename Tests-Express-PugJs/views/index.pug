@@ -1,8 +1,65 @@
 html 
     head 
         title="tests PugJs"
+        link(
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+            crossorigin="anonymous"
+            )
+        script(
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            defer
+            )     
     body 
-        h1=test
-        a(
-            href='https://www.youtube.com/'
-            style="" )=test
+        h1 Ingresar Productos
+        include template/navBar.pug
+        div.m-3
+            form(
+                class="form"
+                action="/api/productos"
+                method="post"
+                name="productos"
+            ) 
+                h2 Ingresar datos
+                div.m-3
+                    label(
+                        for="productTitle"
+                        class="form-label"
+                        ) Nombre
+                    input(
+                        type="text"
+                        class="form-control"
+                        id="productTitle"
+                        name="title"
+                        placeholder="Nombre del Producto"
+                        required
+                        )    
+                div.m-3
+                    label(
+                        for="productPrice"
+                        class="form-label"
+                        ) Precio
+                    input(
+                        type="number"
+                        class="form-control"
+                        id="productPrice"
+                        name="price"                        
+                        required
+                        )    
+                div.m-3
+                    label(
+                        for="productImg"
+                        class="form-label"
+                        ) Thumbnail
+                    input(
+                        type="text"
+                        class="form-control"
+                        id="productImg"
+                        name="thumbnail"   
+                        placeholder="URL de la imagen"                     
+                        required
+                        )    
+                button(
+                    class="btn btn-primary"
+                ) Enviar        

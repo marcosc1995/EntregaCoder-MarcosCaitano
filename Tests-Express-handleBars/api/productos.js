@@ -69,6 +69,6 @@ class Productos {
   }
 }
 //export { Productos };
-export default Productos
+//export default Productos
 // export default Productos
-// module.exports = Productos
+module.exports = Productos

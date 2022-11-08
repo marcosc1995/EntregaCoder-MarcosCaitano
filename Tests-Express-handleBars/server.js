@@ -1,6 +1,9 @@
-import express from "express"
+//import express from "express"
+const express = require('express')
+const Productos = require('./api/productos')
 //import ejs from "ejs"
-import Productos from './api/productos.js'
+//import Productos from './api/productos.js'
+const exphbs = require('express-handlebars')
 
 const productos = new Productos()
 console.log(productos)
@@ -12,8 +15,9 @@ const router = new Router()
 app.use(express.static("./public"))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-app.set('view engine', 'pug')
-app.set('views',  './views')
+app.engine('handlebars', exphbs.engine())
+app.set('view engine', 'handlebars')
+app.set('views', __dirname + '/views')
 app.use('/api/productos' , router )
 
 //router.get()
@@ -21,7 +25,7 @@ app.use('/api/productos' , router )
 const PORT = 8080
 
 const server = app.listen(PORT,()=>{
-    console.log(`Listen localhost:${PORT}`)
+    console.log(`Listen //localhost:${PORT}`)
 })
 server.on('error',(error)=>{
     console.log(error)
@@ -48,7 +52,7 @@ app.post('/api/productos', (req, res)=>{
 const arrayProductos = productos.productos
 app.get('/productos',(req,res)=>{
     console.log(arrayProductos)
-    res.render('boxProductos' ,{arrayProductos})
+    res.render('productos' ,{arrayProductos})
 
 })
 router.get("/:id", (req, res) => {

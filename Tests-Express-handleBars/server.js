@@ -3,7 +3,7 @@ const express = require('express')
 const Productos = require('./api/productos')
 //import ejs from "ejs"
 //import Productos from './api/productos.js'
-const exphbs = require('express-handlebars')
+const handlebars = require('express-handlebars')
 
 const productos = new Productos()
 console.log(productos)
@@ -15,9 +15,14 @@ const router = new Router()
 app.use(express.static("./public"))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-app.engine('handlebars', exphbs.engine())
-app.set('view engine', 'handlebars')
-app.set('views', __dirname + '/views')
+app.engine('hbs', handlebars.engine({
+  extname: '.hbs',
+  defaultLayout: 'index.hbs',
+  layoutsDir: './views/layouts',
+  partialsDir: './views/partials'
+}))
+app.set('view engine', 'hbs')
+app.set('views', './views')
 app.use('/api/productos' , router )
 
 //router.get()
@@ -31,7 +36,7 @@ server.on('error',(error)=>{
     console.log(error)
 })
 app.get('/',(req,res)=>{
-    res.render('index', { productos })
+    res.render('form', { productos })
 })
 
 
@@ -52,7 +57,7 @@ app.post('/api/productos', (req, res)=>{
 const arrayProductos = productos.productos
 app.get('/productos',(req,res)=>{
     console.log(arrayProductos)
-    res.render('productos' ,{arrayProductos})
+    res.render('table' ,{arrayProductos})
 
 })
 router.get("/:id", (req, res) => {

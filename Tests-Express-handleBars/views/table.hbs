@@ -1,0 +1,26 @@
+<h1>Productos</h1>
+<div class="table-responsive">
+{{#if arrayProductos}}
+<table class="table table-dark">
+    <thead>
+        <tr class="color-white">        
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each arrayProductos}}
+            <tr>                
+                <td>{{ this.title }}</td>
+                <td>{{ this.price }}</td>
+                <td><img src="{{ this.thumbnail }}" alt="{{ this.title }}" width="40"></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+    <br>
+    <h3> No hay ningún producto agregado. </h3>
+{{/if}}
+</div>
